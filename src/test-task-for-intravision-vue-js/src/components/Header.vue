@@ -9,9 +9,7 @@
           Vending machine
         </router-link>
       </div>
-      <div class="col-4 d-flex justify-content-end align-items-center">
-        <router-link class="btn btn-sm btn-outline-secondary" to="/admin"> Admin </router-link>
-      </div>
+      <div class="col-4 d-flex justify-content-end align-items-center" />
     </div>
   </header>
 </template>
