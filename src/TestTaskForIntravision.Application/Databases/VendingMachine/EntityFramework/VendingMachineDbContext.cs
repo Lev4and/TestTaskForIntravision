@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TestTaskForIntravision.Application.Extensions;
 using TestTaskForIntravision.Domain.Entities;
 using TestTaskForIntravision.Domain.Infrastructure.Databases;
 using TestTaskForIntravision.Domain.Infrastructure.Databases.Transactions;
@@ -66,6 +67,8 @@ namespace TestTaskForIntravision.Application.Databases.VendingMachine.EntityFram
 
             modelBuilder.Entity<StorageCoin>()
                 .HasIndex(storage => storage.Count);
+
+            modelBuilder.AddDefaultData();
         }
     }
 }

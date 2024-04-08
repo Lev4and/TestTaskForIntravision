@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using TestTaskForIntravision.Application.Databases.VendingMachine.EntityFramework;
@@ -11,9 +12,11 @@ using TestTaskForIntravision.Application.Databases.VendingMachine.EntityFramewor
 namespace TestTaskForIntravision.Application.Databases.VendingMachine.EntityFramework.Migrations
 {
     [DbContext(typeof(VendingMachineDbContext))]
-    partial class VendingMachineDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240408142527_AddedDefaultData")]
+    partial class AddedDefaultData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
