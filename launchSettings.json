@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "FullProduction": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "nginx": "StartWithoutDebugging",
+        "pgadmin": "StartWithoutDebugging",
+        "postgres": "StartWithoutDebugging",
+        "vendingmachine-api": "StartDebugging",
+        "vendingmachine-api-seq": "StartWithoutDebugging"
+      }
+    }
+  }
+}

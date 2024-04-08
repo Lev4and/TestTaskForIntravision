@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTaskForIntravision.Appl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTaskForIntravision.WebApi", "src\TestTaskForIntravision.WebApi\TestTaskForIntravision.WebApi.csproj", "{416F26C8-E7E5-4CAD-9E7D-836212833B25}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{457C97E8-0694-4251-B82F-71D4A7E1B81F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{416F26C8-E7E5-4CAD-9E7D-836212833B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{416F26C8-E7E5-4CAD-9E7D-836212833B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{416F26C8-E7E5-4CAD-9E7D-836212833B25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{457C97E8-0694-4251-B82F-71D4A7E1B81F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{457C97E8-0694-4251-B82F-71D4A7E1B81F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{457C97E8-0694-4251-B82F-71D4A7E1B81F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{457C97E8-0694-4251-B82F-71D4A7E1B81F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

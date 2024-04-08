@@ -1,0 +1,54 @@
+version: '3.4'
+
+services:
+  vendingmachine-api:
+    image: ${DOCKER_REGISTRY-}vendingmachineapi
+    container_name: vendingmachine-api
+    depends_on:
+      - postgres
+      - vendingmachine-api-seq
+    build:
+      context: .
+      dockerfile: src/TestTaskForIntravision.WebApi/Dockerfile
+    networks:
+      - vendingmachine-api-proxy
+      - postgres-proxy
+      - nginx-proxy
+  
+  vendingmachine-api-seq:
+    image: datalust/seq:latest
+    container_name: vendingmachine-api-seq
+    networks:
+      - vendingmachine-api-proxy
+      - nginx-proxy
+  
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    restart: always
+    networks:
+      - postgres-proxy
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    depends_on:
+      - postgres
+    restart: always
+  
+  nginx:
+    image: nginx:mainline
+    container_name: nginx
+    depends_on:
+      - vendingmachine-api
+      - vendingmachine-api-seq
+    networks:
+      - nginx-proxy
+
+networks:
+  vendingmachine-api-proxy:
+    driver: bridge
+  postgres-proxy:
+    driver: bridge
+  nginx-proxy:
+    driver: bridge
