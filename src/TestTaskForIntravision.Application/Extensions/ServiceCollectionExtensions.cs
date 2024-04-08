@@ -9,6 +9,7 @@ using FluentValidation;
 using MediatR;
 using System.Reflection;
 using TestTaskForIntravision.Application.Pipelines;
+using TestTaskForIntravision.Domain.Entities;
 
 namespace TestTaskForIntravision.Application.Extensions
 {
@@ -30,16 +31,10 @@ namespace TestTaskForIntravision.Application.Extensions
 
         public static IServiceCollection AddVendingMachineDbEntityFrameworkRepositories(this IServiceCollection services)
         {
-            //foreach (var repositoryInterface in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
-            //    .Where(type => type.IsInterface && type.HasInterface(typeof(IRepository<>))))
-            //{
-            //    foreach (var repository in typeof(ServiceCollectionExtensions).Assembly.GetTypes()
-            //        .Where(type => type.IsClass && type.HasInterface(repositoryInterface)
-            //            && type.HasInterface(typeof(IEntityFrameworkRepository<>))))
-            //    {
-            //        services.AddTransient(repositoryInterface, repository);
-            //    }
-            //}
+            services.AddTransient<IBeverageRepository, BeverageRepository>();
+            services.AddTransient<ICoinRepository, CoinRepository>();
+            services.AddTransient<IStorageBeverageRepository, StorageBeverageRepository>();
+            services.AddTransient<IStorageCoinRepository, StorageCoinRepository>();
 
             services.AddTransient<IRepository, VendingMachineDbEntityFrameworkRepository>();
 

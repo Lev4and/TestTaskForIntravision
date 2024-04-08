@@ -47,12 +47,12 @@ namespace TestTaskForIntravision.Application.Databases.VendingMachine.EntityFram
             modelBuilder.Entity<Beverage>()
                 .HasOne(beverage => beverage.Image)
                     .WithOne(image => image.Beverage)
-                        .HasPrincipalKey<BeverageImage>(image => image.BeverageId);
+                        .HasForeignKey<BeverageImage>(image => image.BeverageId);
 
             modelBuilder.Entity<Beverage>()
                 .HasOne(beverage => beverage.Storage)
                     .WithOne(storage => storage.Beverage)
-                        .HasPrincipalKey<StorageBeverage>(storage => storage.BeverageId);
+                        .HasForeignKey<StorageBeverage>(storage => storage.BeverageId);
 
             modelBuilder.Entity<Coin>()
                 .HasIndex(coin => coin.Value);
@@ -60,7 +60,7 @@ namespace TestTaskForIntravision.Application.Databases.VendingMachine.EntityFram
             modelBuilder.Entity<Coin>()
                 .HasOne(coin => coin.Storage)
                     .WithOne(storage => storage.Coin)
-                        .HasPrincipalKey<StorageCoin>(storage => storage.CoinId);
+                        .HasForeignKey<StorageCoin>(storage => storage.CoinId);
 
             modelBuilder.Entity<StorageBeverage>()
                 .HasIndex(storage => storage.Count);

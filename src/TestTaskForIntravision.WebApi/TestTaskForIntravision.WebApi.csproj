@@ -31,10 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TestTaskForIntravision.Application\TestTaskForIntravision.Application.csproj" />
   </ItemGroup>
 
