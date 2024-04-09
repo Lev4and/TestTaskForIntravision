@@ -1,4 +1,4 @@
-<script setup lang="ts"></script>
+<script></script>
 
 <template>
   <footer class="py-5 text-center text-body-secondary bg-body-tertiary">
