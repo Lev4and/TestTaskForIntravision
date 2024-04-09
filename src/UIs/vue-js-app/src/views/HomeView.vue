@@ -1,19 +1,11 @@
 <script>
+import PaymentContainer from "@/components/PaymentContainer.vue";
+import BeveragesContainer from "@/components/BeveragesContainer.vue";
+
 export default {
-  data: () => ({
-    coins: [],
-  }),
-
-  watch: {
-    coins: {
-      async handler() {
-        this.coins = await this.getCoins();
-      },
-    },
-  },
-
-  methods: {
-    async getCoins() {},
+  components: {
+    PaymentContainer,
+    BeveragesContainer,
   },
 };
 </script>
@@ -24,25 +16,14 @@ export default {
     <hr />
     <div class="row">
       <div class="col-xl-4">
-        <h1 class="mb-3">Payment</h1>
-        <hr />
-        <h4 class="mb-3">Deposit money</h4>
-        <button v-for="coin in coins" :key="coin.id" v-text="coin.value" />
-        <hr class="my-4" />
-        <div class="d-grid gap-2">
-          <button class="w-100 btn btn-danger btn-lg">
-            Cancel the payment
-          </button>
-          <button class="w-100 btn btn-primary btn-lg">
-            To pay
-          </button>
-        </div>
+        <payment-container />
         <hr class="d-xl-none" />
       </div>
       <div class="col-xl-8">
-        <h1 class="mb-3">Beverages</h1>
-        <hr />
+        <beverages-container />
       </div>
     </div>
   </div>
 </template>
+
+<style scoped></style>
