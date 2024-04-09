@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <header class="border-bottom lh-1 py-3">
+  <header class="border-bottom lh-1 py-3 mb-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1"></div>
       <div class="col-4 text-center">

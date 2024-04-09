@@ -22,7 +22,7 @@ builder.Services.AddVendingMachineModule(appSettings);
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder => builder.WithOrigins("http://localhost")
+    options.AddDefaultPolicy(builder => builder.WithOrigins("http://localhost", "http://localhost:5173")
         .AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 });
 
