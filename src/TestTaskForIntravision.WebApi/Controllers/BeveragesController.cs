@@ -23,9 +23,10 @@ namespace TestTaskForIntravision.WebApi.Controllers
 
         [HttpPost]
         [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> AddBeverageAsync(CancellationToken cancellationToken = default)
+        public async Task<IActionResult> AddBeverageAsync([Required][FromBody] Beverage beverage,
+            CancellationToken cancellationToken = default)
         {
-            return Ok(await _mediator.Send(new AddBeverageCommand(), cancellationToken));
+            return Ok(await _mediator.Send(new AddBeverageCommand(beverage), cancellationToken));
         }
 
         [HttpGet]
@@ -37,7 +38,7 @@ namespace TestTaskForIntravision.WebApi.Controllers
 
         [HttpPost]
         [Route("buy")]
-        [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType(typeof(ApiResponse<IReadOnlyDictionary<decimal, uint>>), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> BuyBeveragesAsync([Required][FromBody] BuyBeveragesDto dto, 
             CancellationToken cancellationToken = default)
         {
@@ -47,16 +48,19 @@ namespace TestTaskForIntravision.WebApi.Controllers
 
         [HttpPut]
         [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateBeverageAsync(CancellationToken cancellationToken = default)
+        public async Task<IActionResult> UpdateBeverageAsync([Required][FromBody] Beverage beverage,
+            CancellationToken cancellationToken = default)
         {
-            return Ok(await _mediator.Send(new UpdateBeverageCommand(), cancellationToken));
+            return Ok(await _mediator.Send(new UpdateBeverageCommand(beverage), cancellationToken));
         }
 
         [HttpDelete]
+        [Route("{id:guid:required}")]
         [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> DeleteBeverageAsync(CancellationToken cancellationToken = default)
+        public async Task<IActionResult> DeleteBeverageAsync([Required][FromRoute(Name = "id")] Guid id,
+            CancellationToken cancellationToken = default)
         {
-            return Ok(await _mediator.Send(new DeleteBeverageCommand(), cancellationToken));
+            return Ok(await _mediator.Send(new DeleteBeverageCommand(id), cancellationToken));
         }
     }
 }
