@@ -35,7 +35,7 @@ namespace TestTaskForIntravision.Application.Web.Middlewares
         private async Task WrapThrownExceptionJsonResponseAsync(HttpResponse response, Exception exception,
             HttpStatusCode httpStatusCode, CancellationToken cancellationToken = default)
         {
-            var newResponseBody = new ApiResponse<object>(null, httpStatusCode, exception);
+            var newResponseBody = new ApiResponse<object>(null, httpStatusCode, exception.Message, exception);
             var newResponseBodyText = JsonConvert.SerializeObject(newResponseBody);
 
             response.ContentType = "application/json; charset=utf-8";

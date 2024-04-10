@@ -153,7 +153,7 @@ namespace TestTaskForIntravision.Application.UseCases.Commands
                     {
                         if (coin.Storage is not null)
                         {
-                            var coinCount = Convert.ToUInt32(change / coin.Value);
+                            var coinCount = Convert.ToUInt32(Math.Floor(change / coin.Value));
 
                             if (coinCount > coin.Storage.Count)
                                 coinCount = coin.Storage.Count;

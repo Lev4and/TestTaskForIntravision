@@ -1,4 +1,5 @@
 <script>
+import { api } from "../api";
 import { cart } from "@/stores/cart.js";
 import { balance } from "@/stores/balance.js";
 import DepositMoney from "@/components/DepositMoney.vue";
@@ -9,14 +10,17 @@ export default {
   },
 
   computed: {
-    cart() {
+    depositedCoins() {
+      return balance().depositedCoins;
+    },
+    selectedBeverages() {
       return cart().items;
     },
     totalBalance() {
       return balance().total;
     },
-    spentBalance() {
-      return balance().spent;
+    notSpentBalance() {
+      return balance().total - balance().spent;
     },
   },
 
@@ -26,8 +30,13 @@ export default {
       balance().clear();
     },
     async pay() {
-      cart().clear();
-      balance().clear();
+      const response = await api.beverages.buy(this.depositedCoins, this.selectedBeverages);
+      if (response.code === 200) {
+        alert(`The purchase was successful. The change: ${JSON.stringify(response.result)}`);
+        location.reload();
+      } else {
+        alert(`An error occurred while making a purchase: ${response.message}`);
+      }
     },
   },
 };
@@ -41,7 +50,7 @@ export default {
     <hr class="my-4" />
     <div class="d-flex flex-column gap-3">
       <span> Total balance {{ totalBalance }} руб. </span>
-      <span> To be paid {{ spentBalance }} руб. </span>
+      <span> Not spent {{ notSpentBalance }} руб. </span>
     </div>
     <hr class="my-4" />
     <div class="d-grid gap-2">
@@ -53,7 +62,7 @@ export default {
       />
       <button
         class="w-100 btn btn-primary btn-lg"
-        :disabled="!cart.length"
+        :disabled="!Object.keys(selectedBeverages).length"
         @click="pay"
         v-text="'To pay'"
       />

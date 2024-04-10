@@ -18,8 +18,7 @@ export default {
       return (
         this.beverage.storage.count &&
         this.freeBalance >= this.beverage.price &&
-        cart().items.filter((item) => item.id === this.beverage.id)
-          .length < this.beverage.storage.count
+        (cart().items[this.beverage.id] || 0) < this.beverage.storage.count
       );
     },
   },

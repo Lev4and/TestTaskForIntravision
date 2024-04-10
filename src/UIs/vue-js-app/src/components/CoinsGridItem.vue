@@ -11,7 +11,7 @@ export default {
 
   methods: {
     incrementBalance() {
-      balance().increment(this.coin.value);
+      balance().increment(this.coin);
     },
   },
 };
