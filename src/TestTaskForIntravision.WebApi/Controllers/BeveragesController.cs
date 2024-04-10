@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Net;
+using TestTaskForIntravision.Application.DTOs;
 using TestTaskForIntravision.Application.UseCases.Commands;
 using TestTaskForIntravision.Application.UseCases.Queries;
 using TestTaskForIntravision.Domain.Entities;
@@ -36,9 +38,11 @@ namespace TestTaskForIntravision.WebApi.Controllers
         [HttpPost]
         [Route("buy")]
         [ProducesResponseType(typeof(ApiResponse<bool>), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> BuyBeveragesAsync(CancellationToken cancellationToken = default)
+        public async Task<IActionResult> BuyBeveragesAsync([Required][FromBody] BuyBeveragesDto dto, 
+            CancellationToken cancellationToken = default)
         {
-            return Ok(await _mediator.Send(new BuyBeveragesCommand(), cancellationToken));
+            return Ok(await _mediator.Send(new BuyBeveragesCommand(dto.DepositedCoins, dto.SelectedBeverages), 
+                cancellationToken));
         }
 
         [HttpPut]

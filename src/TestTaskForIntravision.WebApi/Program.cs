@@ -22,7 +22,7 @@ builder.Services.AddVendingMachineModule(appSettings);
 
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder => builder.WithOrigins("http://localhost", "http://localhost:5173")
+    options.AddDefaultPolicy(builder => builder.WithOrigins("https://localhost:44318", "http://localhost:5173")
         .AllowAnyMethod().AllowAnyHeader().AllowCredentials());
 });
 
@@ -35,7 +35,7 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.AddServer(new OpenApiServer()
     {
-        Url = "http://localhost/"
+        Url = "https://localhost:44318/"
     });
 });
 builder.Services.AddSwaggerGenNewtonsoftSupport();
@@ -72,7 +72,7 @@ app.UseSwaggerUI(options =>
 
     foreach (var description in descriptions)
     {
-        var url = $"/api/swagger/{description.GroupName}/swagger.json";
+        var url = $"/swagger/{description.GroupName}/swagger.json";
         var name = description.GroupName.ToUpperInvariant();
 
         options.SwaggerEndpoint(url, name);

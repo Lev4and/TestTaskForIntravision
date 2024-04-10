@@ -38,6 +38,7 @@ namespace TestTaskForIntravision.Application.Web.Middlewares
             var newResponseBody = new ApiResponse<object>(null, httpStatusCode, exception);
             var newResponseBodyText = JsonConvert.SerializeObject(newResponseBody);
 
+            response.ContentType = "application/json; charset=utf-8";
             response.StatusCode = (int)httpStatusCode;
 
             await response.WriteAsync(newResponseBodyText, cancellationToken);
