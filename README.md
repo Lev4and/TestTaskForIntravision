@@ -4,7 +4,7 @@
 
 Backend
 
-Стэк: .NET Core 8.0, ASP.NET Core WebAPI, MediatR, FluentValidation, EntityFrameworkCore, Serilog, Swagger, Asp.Versioning
+Стек: .NET Core 8.0, ASP.NET Core WebAPI, MediatR, FluentValidation, EntityFrameworkCore, Serilog, Swagger, Asp.Versioning
 
 База данных: PostregeSQL
 
@@ -12,13 +12,13 @@ Backend
 
 Через IIS Express
 
-Где находяться строки подключения к PostregeSQL?
+Где находиться строки подключения к PostregeSQL?
 
-Внутри поекта «TestTaskForIntravision.WebApi» в файлах конфигурации «appsettings.*.json» в разделе «ConnectionStrings».
+Внутри проекта «TestTaskForIntravision.WebApi» в файлах конфигурации «appsettings.*.json» в разделе «ConnectionStrings».
 
 Frontend
 
-Стэк: Vue.js 2, Vite.js, Vue Router, Bootstrap 5, Pinia, Axios, Lodash, Eslint, Prettier
+Стек: Vue.js 2, Vite.js, Vue Router, Bootstrap 5, Pinia, Axios, Lodash, Eslint, Prettier
 
 Как запустить?
 
@@ -27,9 +27,9 @@ Frontend
 - Перейти в папку «UIs»;
 - Перейти в папку «vue-js-app»;
 - Открыть терминал;
-- Ввести комманду «npm i»;
-- Ввести комманду «npm run dev».
+- Ввести команду «npm i»;
+- Ввести команду «npm run dev».
 
 Как перейти в панель администратора?
 
-В адреной строке указать «/admin?secret=admin»
+В адресной строке указать «/admin?secret=admin»
