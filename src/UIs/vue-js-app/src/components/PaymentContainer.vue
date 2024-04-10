@@ -30,9 +30,16 @@ export default {
       balance().clear();
     },
     async pay() {
-      const response = await api.beverages.buy(this.depositedCoins, this.selectedBeverages);
+      const response = await api.beverages.buy(
+        this.depositedCoins,
+        this.selectedBeverages
+      );
       if (response.code === 200) {
-        alert(`The purchase was successful. The change: ${JSON.stringify(response.result)}`);
+        alert(
+          `The purchase was successful. The change: ${JSON.stringify(
+            response.result
+          )}`
+        );
         location.reload();
       } else {
         alert(`An error occurred while making a purchase: ${response.message}`);

@@ -56,10 +56,15 @@ namespace TestTaskForIntravision.Application.UseCases.Commands
 
                 ReduceCountCoinsInStorage(coins, changeCoins);
 
-                await SaveChangesAsync(coins, beverages, cancellationToken);
-
-                return changeCoins.Where(item => item.Value > 0)
-                    .ToDictionary(item => item.Key.Value, item => item.Value);
+                if (await SaveChangesAsync(coins, beverages, cancellationToken)) 
+                {
+                    return changeCoins.Where(item => item.Value > 0)
+                        .ToDictionary(item => item.Key.Value, item => item.Value);
+                }
+                else
+                {
+                    throw new Exception("An error occurred while making a purchase.");
+                }
             }
 
             private async Task<IReadOnlyCollection<Coin>> GetCoinsAsync(CancellationToken cancellationToken = default)

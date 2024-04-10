@@ -18,6 +18,13 @@ const router = new VueRouter({
       path: "/admin",
       name: "admin",
       component: AdminView,
+      beforeEnter(to, from, next) {
+        if (to.query.secret === "admin") {
+          next();
+        } else {
+          next("");
+        }
+      },
     },
   ],
 });

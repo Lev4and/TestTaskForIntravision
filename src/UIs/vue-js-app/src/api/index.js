@@ -42,20 +42,20 @@ class HttpClient {
     this.requestHandler = new RequestHandler();
   }
 
-  async get(url = '') {
+  async get(url = "") {
     return await this.requestHandler.handle(this.axios.get(url));
   }
 
-  async post(url = '', data = null) {
+  async post(url = "", data = null) {
     return await this.requestHandler.handle(this.axios.post(url, data));
   }
 
-  async put() {
-    return await this.requestHandler.handle(this.axios.put());
+  async put(url = "", data = null) {
+    return await this.requestHandler.handle(this.axios.put(url, data));
   }
 
-  async delete() {
-    return await this.requestHandler.handle(this.axios.delete());
+  async delete(url = "") {
+    return await this.requestHandler.handle(this.axios.delete(url));
   }
 }
 
@@ -77,7 +77,10 @@ class BeveragesApiHttpClient extends ApiHttpClient {
   }
 
   async buy(coins, beverages) {
-    return super.post('buy', { depositedCoins: coins, selectedBeverages: beverages });
+    return super.post("buy", {
+      depositedCoins: coins,
+      selectedBeverages: beverages,
+    });
   }
 }
 

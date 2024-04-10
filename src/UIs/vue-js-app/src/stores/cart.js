@@ -10,7 +10,7 @@ export const cart = defineStore({
   },
   actions: {
     add(item) {
-      this.value[item.id] = !!this.value[item.id] ? this.value[item.id] + 1 : 1;
+      this.value[item.id] = this.value[item.id] ? this.value[item.id] + 1 : 1;
     },
     clear() {
       this.value = {};

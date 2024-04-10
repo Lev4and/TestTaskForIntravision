@@ -5,7 +5,7 @@ export const balance = defineStore({
   state: () => ({
     used: 0,
     value: 0,
-    coins: {}
+    coins: {},
   }),
   getters: {
     spent: (state) => state.used,
@@ -14,7 +14,7 @@ export const balance = defineStore({
   },
   actions: {
     increment(coin) {
-      this.coins[coin.id] = !!this.coins[coin.id] ? this.coins[coin.id] + 1 : 1;
+      this.coins[coin.id] = this.coins[coin.id] ? this.coins[coin.id] + 1 : 1;
       this.value += coin.value;
     },
     spend(value) {

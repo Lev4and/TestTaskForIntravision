@@ -25,8 +25,8 @@ export default {
 
   methods: {
     addToCart() {
-      cart().add(this.beverage)
-      balance().spend(this.beverage.price)
+      cart().add(this.beverage);
+      balance().spend(this.beverage.price);
     },
   },
 };
@@ -48,10 +48,15 @@ export default {
           class="beverages__grid__item__title card-text text-center"
           v-text="beverage.title"
         />
+        <p class="text-center">Left in stock: {{ beverage.storage.count }}</p>
         <div class="row align-items-center">
           <div class="col-6 text-left">{{ beverage.price }} руб.</div>
           <div class="col-6">
-            <button class="btn btn-primary" :disabled="!canAddToCart" @click="addToCart">
+            <button
+              class="btn btn-primary"
+              :disabled="!canAddToCart"
+              @click="addToCart"
+            >
               Add to cart
             </button>
           </div>
@@ -75,5 +80,6 @@ export default {
   text-overflow: ellipsis;
   line-clamp: 2;
   -webkit-box-orient: vertical;
+  height: 2lh;
 }
 </style>
